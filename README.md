@@ -1,2 +1,1 @@
-# improved-octo-enigma
-setting up multiplayer game
+5-Player Texas Hold 'Em Poker, built with React.
