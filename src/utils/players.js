@@ -7,7 +7,7 @@ const axios = require('axios')
 const generateTable = async () => {
 	const users = [{
 		id: uuid(),
-		name: 'Jason',
+		name: 'Player 1',
 		avatarURL: '/assets/boy.svg',
 		cards: [],
 		showDownHand: {
@@ -25,56 +25,35 @@ const generateTable = async () => {
 		canRaise: true,
 		stackInvestment: 0,
 		robot: false
-	},{
-	id: uuid(3),
-	name: 'Hemann',
-	avatarURL: '/assets/boy.svg',
-	cards: [],
-	showDownHand: {
-		hand: [],
-		descendingSortHand: [], 
-	},
-	chips: 20000,
-	roundStartChips: 20000,
-	roundEndChips: 20000,
-	currentRoundChipsInvested: 0,
-	bet: 0,
-	betReconciled: false,
-	folded: false,
-	allIn: false,
-	canRaise: true,
-	stackInvestment: 0,
-	robot: false
-}
-];
+	}];
 
-	// const response = await axios.get(`https://randomuser.me/api/?results=5&nat=us,gb,fr`);
-	// response.data.results
-	// 	.map(user => {
-	// 		const randomizedChips = Math.floor(Math.random() * (20000 - 18000)) + 18000;
-	// 		return ({
-	// 			id: uuid(),
-	// 			name: `${user.name.first.charAt(0).toUpperCase()}${user.name.first.slice(1)} ${user.name.last.charAt(0).toUpperCase()}${user.name.last.slice(1)}`,
-	// 			avatarURL: user.picture.large,
-	// 			cards: [],
-	// 			chips: randomizedChips,
-	// 			roundStartChips: randomizedChips,
-	// 			roundEndChips: randomizedChips,
-	// 			currentRoundChipsInvested: 0,
-	// 			showDownHand: {
-	// 				hand: [],
-	// 				descendingSortHand: [],
-	// 			},
-	// 			bet: 0,
-	// 			betReconciled: false,
-	// 			folded: false,
-	// 			allIn: false,
-	// 			robot: true,
-	// 			canRaise: true,
-	// 			stackInvestment: 0,
-	// 		})
-	// 	})
-	// 	.forEach(user => users.push(user))
+	const response = await axios.get(`https://randomuser.me/api/?results=4&nat=us,gb,fr`);
+	response.data.results
+		.map(user => {
+			const randomizedChips = Math.floor(Math.random() * (20000 - 18000)) + 18000;
+			return ({
+				id: uuid(),
+				name: `${user.name.first.charAt(0).toUpperCase()}${user.name.first.slice(1)} ${user.name.last.charAt(0).toUpperCase()}${user.name.last.slice(1)}`,
+				avatarURL: user.picture.large,
+				cards: [],
+				chips: randomizedChips,
+				roundStartChips: randomizedChips,
+				roundEndChips: randomizedChips,
+				currentRoundChipsInvested: 0,
+				showDownHand: {
+					hand: [],
+					descendingSortHand: [],
+				},
+				bet: 0,
+				betReconciled: false,
+				folded: false,
+				allIn: false,
+				robot: true,
+				canRaise: true,
+				stackInvestment: 0,
+			})
+		})
+		.forEach(user => users.push(user))
 
 	return users
 }
